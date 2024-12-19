@@ -8,7 +8,7 @@ if [ ! -f "$input_file" ]; then
 fi
 
 singletons=("<area>" "<base>" "<br>" "<col>" "<command>" "<embed>" "<hr>" "<img>" "<input>" "<keygen>" "<link>" "<meta>" "<param>" "<source>" "<track>" "<wbr>")
-inline=("<abbr>" "<acronym>" "<b>" "<bdo>" "<button>" "<cite>" "<code>" "<dfn>" "<em>" "<i>" "<kbd>" "<q>" "<samp>" "<small>" "<span>" "<strong>" "<sub>" "<sup>" "<time>" "<var>")
+inline=("<abbr>" "<acronym>" "<b>" "<bdo>" "<br>" "<button>" "<cite>" "<code>" "<dfn>" "<em>" "<i>" "<kbd>" "<q>" "<samp>" "<small>" "<span>" "<strong>" "<sub>" "<sup>" "<time>" "<var>")
 
 output_file="pretty_$input_file"
 
@@ -74,9 +74,8 @@ cat $input_file | while IFS="" read -r line || [[ -n "$line" ]]; do
                         break
                     fi
                 done
-            fi
 
-            if [[ "${line:$i+1:1}" == "/" ]]; then # tag de inchidere
+            else # tag de inchidere
                 tag=""
                 ok=0
                 inl=0
@@ -113,9 +112,29 @@ cat $input_file | while IFS="" read -r line || [[ -n "$line" ]]; do
                 done
             fi
 
-        # else
-            # sarim pana la primul caracter care nu e spatiu sau < si afisam
-            # la fiecare spatiu, parcurgem spatiile si le afisam abia daca ajungem la un caracter care nu e spatiu si nu e <
+        else
+            for (( j=$i; j<${#line}; j++ )); do
+                if [[ "${line:$j:1}" == "<" ]]; then
+                    break
+                fi
+                if [[ "${line:$j:1}" != " " ]] && [[ "${line:$j:1}" != $'\n' ]] && [[ "${line:$j:1}" != $'\t' ]]; then # aici incepe textul
+                    if [[ $inl -eq 0 ]]; then # daca nu suntem intr-un tag inline
+                        echo -n $'\n' >> $output_file # pune newline dupa tagul de deschidere
+                        for (( k=1; k<=$level+1; k++ )); do
+                            echo -n $'\t' >> $output_file # pune taburi la inceputul textului
+                        done
+                    fi
+                    while (( j<${#line} )); do # parcurge caracterele pana la urmatorul tag
+                        if [[ "${line:$j:1}" == "<" ]]; then
+                            break
+                        fi
+                        echo -n "${line:$j:1}" >> $output_file
+                        j=$j+1
+                    done
+                    i=$j-1
+                    break
+                fi
+            done
         fi
     done
 done
