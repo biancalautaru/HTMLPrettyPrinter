@@ -21,7 +21,7 @@ level=-1
 for (( i=0; i<${#text}; i++ )); do
     poz=0
     for (( i=0; i<${#text}; i++ )); do
-        if [[ "${text:$i:3}" == "<!d" ]] || [[ "${text:$i:3}" == "<!D" ]]; then # cazul doctype
+        if [[ "${text:$i:3}" == "<!d" ]] || [[ "${text:$i:3}" == "<!D" ]]; then
             echo -n "${text:$i:15}" >> $output_file
             poz=$i+16
             break
@@ -30,7 +30,7 @@ for (( i=0; i<${#text}; i++ )); do
     
     for (( i=$poz; i<${#text}; i++ )); do
         if [[ "${text:$i:1}" == "<" ]]; then
-            if [[ "${text:$i+1:1}" != "/" ]]; then # tag de deschidere
+            if [[ "${text:$i+1:1}" != "/" ]]; then
                 tag=""
                 ok=0
                 sg=0
@@ -41,14 +41,14 @@ for (( i=0; i<${#text}; i++ )); do
                         tag_low=$(echo "$tag" | tr "[A-Z]" "[a-z]")
 
                         for k in "${singletons[@]}"; do
-                            if [[ "$k" == "$tag_low>" ]]; then # sg=1 daca e singleton
+                            if [[ "$k" == "$tag_low>" ]]; then
                                 sg=1
                                 break
                             fi
                         done
 
                         for k in "${inline[@]}"; do
-                            if [[ "$k" == "$tag_low>" ]]; then # inl=1 daca e inline
+                            if [[ "$k" == "$tag_low>" ]]; then
                                 inl=1
                                 break
                             fi
@@ -57,8 +57,8 @@ for (( i=0; i<${#text}; i++ )); do
 
                     tag+=${text:$j:1}
                     if [[ "${text:$j:1}" == ">" ]]; then
-                        level=$level+1 # pune tag pe stiva
-                        if [[ $inl -eq 1 ]]; then # daca e tag inline, nu pun taburi si newline
+                        level=$level+1
+                        if [[ $inl -eq 1 ]]; then
                             echo -n "$tag" >> $output_file
                         else
                             echo -n $'\n' >> $output_file
@@ -68,7 +68,7 @@ for (( i=0; i<${#text}; i++ )); do
                             echo -n "$tag" >> $output_file
                         fi
 
-                        if [[ $sg -eq 1 ]]; then # scoate tag de pe stiva daca e singleton
+                        if [[ $sg -eq 1 ]]; then
                             level=$level-1
                         fi
 
@@ -79,11 +79,11 @@ for (( i=0; i<${#text}; i++ )); do
 
                 if [[ $sg -eq 0 ]]; then
                     for (( j=$i+1; j<${#text}; j++ )); do
-                        if [[ "${text:$j:1}" == "<" ]]; then # ajunge la urmatorul tag
+                        if [[ "${text:$j:1}" == "<" ]]; then
                             break
                         fi
 
-                        if [[ "${text:$j:1}" != " " ]] && [[ "${text:$j:1}" != $'\n' ]] && [[ "${line:$j:1}" != $'\t' ]]; then # aici incepe textul
+                        if [[ "${text:$j:1}" != " " ]] && [[ "${text:$j:1}" != $'\n' ]] && [[ "${line:$j:1}" != $'\t' ]]; then
                             if [[ $inl -eq 0 ]]; then
                                 echo -n $'\n' >> $output_file
                                 for (( k=1; k<=$level+1; k++ )); do
@@ -92,7 +92,7 @@ for (( i=0; i<${#text}; i++ )); do
                             fi
 
                             content=""
-                            while (( j<${#text} )); do # afiseaza caracterele pana la urmatorul tag
+                            while (( j<${#text} )); do
                                 if [[ "${text:$j:1}" == "<" ]]; then
                                     if [[ "${text:$j+1:1}" != "/" ]]; then
                                         echo -n "$content" >> $output_file
@@ -114,7 +114,7 @@ for (( i=0; i<${#text}; i++ )); do
                 else
                     content=""
                     for (( j=$i+1; j<${#text}; j++ )); do
-                        if [[ "${text:$j:1}" == "<" ]]; then # ajunge la urmatorul tag
+                        if [[ "${text:$j:1}" == "<" ]]; then
                             break
                         fi
                         content+="${text:j:1}"
@@ -126,7 +126,7 @@ for (( i=0; i<${#text}; i++ )); do
                     i=$j-1
                 fi
 
-            else # tag de inchidere
+            else
                 tag=""
                 ok=0
                 inl=0
@@ -136,7 +136,7 @@ for (( i=0; i<${#text}; i++ )); do
                         tag_low=$(echo "<${tag:2:${#tag}}" | tr "[A-Z]" "[a-z]")
 
                         for k in "${inline[@]}"; do
-                            if [[ "$k" == "$tag_low>" ]]; then # inl=1 daca e inline
+                            if [[ "$k" == "$tag_low>" ]]; then
                                 inl=1
                                 break
                             fi
@@ -145,7 +145,7 @@ for (( i=0; i<${#text}; i++ )); do
 
                     tag+=${text:$j:1}
                     if [[ "${text:$j:1}" == ">" ]]; then
-                        if [[ $inl -eq 1 ]]; then # daca e tag inline, nu pun taburi si newline
+                        if [[ $inl -eq 1 ]]; then
                             echo -n "$tag" >> $output_file
                         else
                             echo -n $'\n' >> $output_file
@@ -155,7 +155,7 @@ for (( i=0; i<${#text}; i++ )); do
                             echo -n "$tag" >> $output_file
                         fi
 
-                        level=$level-1 # scoate tag de pe stiva
+                        level=$level-1
 
                         i=$j
                         break
@@ -164,7 +164,7 @@ for (( i=0; i<${#text}; i++ )); do
 
                 content=""
                 for (( j=$i+1; j<${#text}; j++ )); do
-                    if [[ "${text:$j:1}" == "<" ]]; then # ajunge la urmatorul tag
+                    if [[ "${text:$j:1}" == "<" ]]; then
                         break
                     fi
                     content+="${text:j:1}"
