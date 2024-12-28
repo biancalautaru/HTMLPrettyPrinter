@@ -50,6 +50,7 @@ for (( i=0; i<${#text}; i++ )); do
     
     for (( i=$pos; i<${#text}; i++ )); do
         progress_bar "$i" "${#text}"
+
         if [[ "${text:$i:1}" == "<" ]]; then
             if [[ "${text:$i+1:1}" != "/" ]]; then
                 tag=""
@@ -79,6 +80,7 @@ for (( i=0; i<${#text}; i++ )); do
                     tag+=${text:$j:1}
                     if [[ "${text:$j:1}" == ">" ]]; then
                         level=$level+1
+
                         if [[ $inl -eq 1 ]]; then
                             echo -n "$tag" >> $output_file
                         else
@@ -122,11 +124,13 @@ for (( i=0; i<${#text}; i++ )); do
                                     fi
                                     break
                                 fi
+
                                 content+="${text:j:1}"
                                 if [[ "${text:$j:1}" != " " ]] && [[ "${text:$j:1}" != $'\n' ]] && [[ "${text:$j:1}" != $'\t' ]]; then
                                     echo -n "$content" >> $output_file
                                     content=""
                                 fi
+
                                 j=$j+1
                             done
                             i=$j-1
@@ -142,6 +146,7 @@ for (( i=0; i<${#text}; i++ )); do
                             i=$j-1
                             break
                         fi
+
                         content+="${text:j:1}"
                         if [[ "${text:$j:1}" != " " ]] && [[ "${text:$j:1}" != $'\n' ]] && [[ "${text:$j:1}" != $'\t' ]]; then
                             echo -n "$content" >> $output_file
@@ -196,6 +201,7 @@ for (( i=0; i<${#text}; i++ )); do
                         i=$j-1
                         break
                     fi
+                    
                     content+="${text:j:1}"
                     if [[ "${text:$j:1}" != " " ]] && [[ "${text:$j:1}" != $'\n' ]] && [[ "${text:$j:1}" != $'\t' ]]; then
                         echo -n "$content" >> $output_file
