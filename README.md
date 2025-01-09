@@ -83,9 +83,10 @@ de progres ce apare în terminal:
 
 ![image](https://github.com/user-attachments/assets/e2a9db4d-ac5b-45f1-a18e-c8a859a1acd8)
 
-![image](https://github.com/user-attachments/assets/461cc909-ce20-490e-a698-fee55d354a27)
+![image](https://github.com/user-attachments/assets/9e61c069-7bec-4741-a7be-44853bc29040)
 
-![image](https://github.com/user-attachments/assets/94482845-21e7-4d89-a5bb-f32d9e94e0e4)
+![image](https://github.com/user-attachments/assets/7cdaa506-dc86-4adf-af4f-e4dd1e004825)
+
 
 ➢ Formatarea fișierului `lab2.html`, realizat pentru materia Tehnici Web:
 
