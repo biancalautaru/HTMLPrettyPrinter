@@ -1,18 +1,15 @@
-# Proiect ITBI
-
-## HTMLPrettyPrinter
+# HTMLPrettyPrinter
 
 Echipa Deftones (Lăutaru Bianca-Maria)
 
 Grupa 152
 
-### Cuprins:
+## Cuprins:
 
-1. Descrierea problemei
-2. Descrierea soluției
-3. Dificultăți întâmpinate
-4. Rezultate experimentale
-
+1. [Descrierea problemei](#1.-Descrierea-problemei)
+2. [Descrierea soluției](#2.-Descrierea-soluției) 
+3. [Dificultăți întâmpinate](#3.-Dificultățile-întâmpinate)
+4. [Rezultate experimentale](#4.-Rezultate-experimentale)
 
 ### 1. Descrierea problemei
 
