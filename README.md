@@ -1,3 +1,5 @@
+Punctaj: 30/30
+
 # HTMLPrettyPrinter
 
 Echipa Deftones (Lăutaru Bianca-Maria)
