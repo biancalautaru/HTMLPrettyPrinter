@@ -29,8 +29,8 @@ uri.
    ###### 4.1. Când se ajunge la un tag de deschidere, nivelul de indentare curent crește cu 1.
    ###### 4.2. Când se ajunge la un tag de închidere, nivelul de indentare curent scade cu 1.
    ###### 4.3. Se afișează în fișierul de output un newline (dacă nu este tag inline), un număr de tab-uri egal cu nivelul de indentare și tag-ul.
-#### 6. Se verifică dacă s-a ajuns la conținutul text din interiorul unui tag, caz în care este afișat numărul corespunzător de tab-uri, apoi textul.
-#### 7. La finalul parcurgerii fișierului, se afișează în terminal numele fișierului de output.
+#### 5. Se verifică dacă s-a ajuns la conținutul text din interiorul unui tag, caz în care este afișat numărul corespunzător de tab-uri, apoi textul.
+#### 6. La finalul parcurgerii fișierului, se afișează în terminal numele fișierului de output.
 
 ### 3. Dificultăți întâmpinate
 
