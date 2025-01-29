@@ -2,12 +2,6 @@ Punctaj: 30/30
 
 # HTMLPrettyPrinter
 
-Echipa Deftones (Lăutaru Bianca-Maria)
-
-Grupa 152
-
-## Cuprins:
-
 1. [Descrierea problemei](#1-descrierea-problemei)
 2. [Descrierea soluției](#2-descrierea-soluției) 
 3. [Dificultăți întâmpinate](#3-dificultăți-întâmpinate)
@@ -28,19 +22,15 @@ uri.
 
 ### 2. Descrierea soluției
 
-1. Se verifică dacă există fișierul oferit ca parametru pentru script.
-2. Se creează un fișier gol pentru output.
-3. Se parcurge fișierul HTML caracter cu caracter și se apelează o funcție care afișează
-    în terminal o bară de progres.
-4. Se verifică dacă începe un tag și de ce tip (normal / singleton – are doar tag de
-    deschidere / inline – care să nu fie afișat pe rând nou).
-    4.1. Când se ajunge la un tag de deschidere, nivelul de indentare curent crește cu 1.
-    4.2. Când se ajunge la un tag de închidere, nivelul de indentare curent scade cu 1.
-    4.3. Se afișează în fișierul de output un newline (dacă nu este tag inline), un număr
-       de tab-uri egal cu nivelul de indentare și tag-ul.
-5. Se verifică dacă s-a ajuns la conținutul text din interiorul unui tag, caz în care este
-    afișat numărul corespunzător de tab-uri, apoi textul.
-6. La finalul parcurgerii fișierului, se afișează în terminal numele fișierului de output.
+#### 1. Se verifică dacă există fișierul oferit ca parametru pentru script.
+#### 2. Se creează un fișier gol pentru output.
+#### 3. Se parcurge fișierul HTML caracter cu caracter și se apelează o funcție care afișează în terminal o bară de progres.
+#### 4. Se verifică dacă începe un tag și de ce tip (normal / singleton – are doar tag de deschidere / inline – care să nu fie afișat pe rând nou).
+   ###### 4.1. Când se ajunge la un tag de deschidere, nivelul de indentare curent crește cu 1.
+   ###### 4.2. Când se ajunge la un tag de închidere, nivelul de indentare curent scade cu 1.
+   ###### 4.3. Se afișează în fișierul de output un newline (dacă nu este tag inline), un număr de tab-uri egal cu nivelul de indentare și tag-ul.
+#### 6. Se verifică dacă s-a ajuns la conținutul text din interiorul unui tag, caz în care este afișat numărul corespunzător de tab-uri, apoi textul.
+#### 7. La finalul parcurgerii fișierului, se afișează în terminal numele fișierului de output.
 
 ### 3. Dificultăți întâmpinate
 
