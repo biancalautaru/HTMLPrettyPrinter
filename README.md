@@ -1,5 +1,3 @@
-***Punctaj: 30/30***
-
 # HTMLPrettyPrinter
 
 1. **[Descrierea problemei](#1-descrierea-problemei)**
